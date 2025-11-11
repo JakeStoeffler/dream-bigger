@@ -1,6 +1,22 @@
-# Dream Bigger 2024: Software Engineering Presentation
+# Dream Bigger 2025: Software Engineering Presentation
 
 An interactive, modern web-based presentation for Fennimore High School's Dream Bigger Career Exploration Day.
+
+## ✨ Latest Updates
+
+**November 2024 - Major Revision:**
+- ✅ Updated to 2025 event date
+- ✅ Made AI discussion more realistic (removed "10x faster" claims, added nuance about maintainability)
+- ✅ **Interactive demo** - students provide input on topic, colors, and features
+- ✅ Added code snippets showing key programming concepts
+- ✅ Included both remote AND in-office work perspectives
+- ✅ Linked to BLS for verified salary data ($130k median)
+- ✅ All learning resources now clickable links
+- ✅ Updated timeline with correct career progression
+- ✅ Emphasized building scalable, extensible, lasting systems
+- ✅ Added grad school to education paths
+- ✅ Replaced climate tech with sports technology (more relatable)
+- ✅ Updated final message: "Build because you love it"
 
 ## 🎯 Overview
 
@@ -113,12 +129,29 @@ This presentation is designed for a 15-minute session with high school students 
 
 ## 🎨 Customization
 
+### Add Company Logos (Optional but Nice!)
+
+The presentation references company logos on Slide 2. See `logos/README.md` for details.
+
+**Quick options:**
+1. **Add real logos**: Download PNG logos and place in `/logos` directory
+2. **Skip logos**: Remove the `<img>` tags from the timeline items in `index.html`
+3. **Leave as-is**: The presentation works fine even if logo files are missing (they just won't display)
+
+Files needed (if you want logos):
+- `uw-madison.png`
+- `ibm.png`
+- `227labs.png` (your consulting business - replace with your logo)
+- `amazon.png`
+- `hinge-health.png`
+- `energy-conservatory.png`
+
 ### Update Your Info
 
 Edit `index.html` to update:
 - Your current role/company (search for "Energy Conservatory" or your current title)
 - Timeline dates and events (Slide 2)
-- Salary information (Slide 9) - check latest data from payscale.com or levels.fyi
+- Salary information (Slide 9) - check latest data from BLS/payscale.com
 - Contact information (Slide 15)
 
 ### Modify the Demo App
@@ -218,8 +251,31 @@ If you need more/less time:
 ### Before Live Demo (Slide 5)
 > "So here's the thing - when I graduated in 2014, none of these AI tools existed. Now, I use them every single day. Let me show you exactly how modern software engineers work. I'm going to build a real app in the next few minutes, and you'll get to use it at the end."
 
-### During Demo
-> "I'm using Claude AI as my coding partner. Watch - I just described what I want: 'Build me a Wisconsin quiz game with multiple choice questions and score tracking.' And look at all this code it generated... Now I'll ask it to make the design better... See how we work together? I guide it, it does the heavy lifting, and I make sure everything works correctly."
+### Interactive Demo Setup (Slide 6)
+> "Alright, I need your help to make this demo awesome! Let's build something together."
+>
+> **Ask the students:**
+> - "What topic should we make the quiz about? Wisconsin? Sports? Music? Video games?"
+> - "What colors do you want to see? School colors? Your favorite colors?"
+> - "Any special features you want? Confetti when you win? Sound effects?"
+>
+> **Then show them the prompt you'll use:**
+> "Watch - I'm going to ask Claude to build exactly what you just told me..."
+>
+> **Type the prompt live (using their input):**
+> ```
+> "Build an interactive quiz game about [THEIR TOPIC] with these features:
+> - 5 multiple choice questions with 4 options each
+> - Real-time score tracking
+> - Show a fun fact after each answer
+> - Colorful design using [THEIR COLORS]
+> - Mobile-responsive layout
+> - [THEIR SPECIAL FEATURE]
+> Use HTML, CSS, and vanilla JavaScript in a single file."
+> ```
+>
+> **As the code generates:**
+> "Look at all this code it's writing... HTML structure... CSS for styling... JavaScript for the logic... This is how modern engineers work - we guide the AI, review what it creates, and make sure it's correct."
 
 ### Closing (Slide 13)
 > "Here's what I want you to remember: You're living in an unprecedented time. You have tools I could only dream about when I was your age. You can learn to code for free, work from anywhere, and build things that impact millions of people. But here's the key - do it because you love it, because you're curious, because you want to solve problems. Not because of the money or the 'tech bro' lifestyle. Start with passion. Dream bigger."
