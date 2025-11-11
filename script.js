@@ -28,7 +28,7 @@ function goToSlide(slideNumber) {
     if (slideNumber > currentSlide) {
         slides[currentSlide - 1].classList.add('prev');
     } else {
-        slides[currentSlide - 1].classList.remove('prev');
+        slides[slideNumber - 1].classList.remove('prev');
     }
 
     // Update current slide
@@ -118,7 +118,7 @@ function generateQRCode() {
     const urlDisplay = document.getElementById('demo-url');
 
     // Get the demo URL (will work both locally and when deployed)
-    const demoURL = window.location.origin + '/demo.html';
+    const demoURL = 'https://jakestoeffler.github.io/dream-bigger/demo.html';
 
     // Clear previous QR code if any
     qrContainer.innerHTML = '';
