@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisconsin Quiz Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #1f2937;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
+        .quiz-card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-size: 1.5rem;
+            color: #1f2937;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option {
+            background: #f3f4f6;
+            border: 2px solid #e5e7eb;
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .option:hover {
+            background: #e5e7eb;
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .option.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .option.correct {
+            background: #10b981;
+            color: white;
+            border-color: #10b981;
+        }
+
+        .option.incorrect {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+
+        .option:disabled {
+            cursor: not-allowed;
+        }
+
+        .fun-fact {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .fun-fact.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fun-fact h3 {
+            color: #92400e;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .fun-fact p {
+            color: #78350f;
+            line-height: 1.6;
+        }
+
+        .score-display {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.3rem;
+            color: #6b7280;
+        }
+
+        .score-display .score {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .button:disabled {
+            background: #d1d5db;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .results {
+            display: none;
+            text-align: center;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .results h2 {
+            color: #1f2937;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .final-score {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #667eea;
+            margin: 20px 0;
+        }
+
+        .performance {
+            font-size: 1.5rem;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+
+        .built-by {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .built-by h3 {
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+
+        .built-by p {
+            color: #6b7280;
+            margin: 5px 0;
+        }
+
+        .code-section {
+            background: #1f2937;
+            color: #f3f4f6;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .code-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .code-section p {
+            margin: 10px 0;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .code-section code {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #a5b4fc;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: rgba(102, 126, 234, 0.2);
+            color: #a5b4fc;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 600px) {
+            .quiz-card {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .question {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧀 Wisconsin Quiz</h1>
+            <p class="subtitle">How well do you know the Badger State?</p>
+        </div>
+
+        <div class="quiz-card">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+
+            <div id="quiz-container">
+                <div class="question" id="question"></div>
+                <div class="options" id="options"></div>
+                <div class="fun-fact" id="fun-fact">
+                    <h3>💡 Fun Fact!</h3>
+                    <p id="fact-text"></p>
+                </div>
+                <button class="button" id="next-btn" disabled>Next Question</button>
+            </div>
+
+            <div class="results" id="results">
+                <h2>Quiz Complete! 🎉</h2>
+                <div class="final-score" id="final-score"></div>
+                <div class="performance" id="performance"></div>
+                <button class="button" onclick="location.reload()">Take Quiz Again</button>
+            </div>
+
+            <div class="score-display">
+                Score: <span class="score" id="score">0</span> / <span id="total">5</span>
+            </div>
+        </div>
+
+        <div class="built-by">
+            <h3>✨ Built live during the presentation</h3>
+            <p>Created by Jake Stoeffler with AI assistance</p>
+            <p>Time to build: ~3 minutes</p>
+        </div>
+
+        <div class="code-section">
+            <h3>🔍 How This App Works</h3>
+            <p>This quiz app was built using:</p>
+            <div class="tech-stack">
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">AI-Assisted</span>
+            </div>
+            <p style="margin-top: 20px;"><strong>Key features:</strong></p>
+            <p>• <code>Questions array</code> stores quiz data with correct answers and fun facts</p>
+            <p>• <code>Event listeners</code> handle user clicks on answer options</p>
+            <p>• <code>Score tracking</code> updates in real-time as you answer</p>
+            <p>• <code>Progress bar</code> shows how far through the quiz you are</p>
+            <p>• <code>Responsive design</code> works on phones, tablets, and computers</p>
+            <p style="margin-top: 15px; color: #a5b4fc;">
+                <strong>The AI (ChatGPT/Claude) helped me:</strong><br>
+                Write the questions • Design the layout • Add animations • Fix bugs
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Quiz questions and answers
+        const questions = [
+            {
+                question: "What is Wisconsin's official nickname?",
+                options: ["The Dairy State", "The Badger State", "The Cheese State", "The Lake State"],
+                correct: 1,
+                fact: "Wisconsin earned the nickname 'The Badger State' from lead miners in the 1820s who dug tunnels into hillsides and lived in them during winter, like badgers!"
+            },
+            {
+                question: "Which city is the capital of Wisconsin?",
+                options: ["Milwaukee", "Green Bay", "Madison", "Fennimore"],
+                correct: 2,
+                fact: "Madison is built on an isthmus between Lakes Mendota and Monona. It's home to the University of Wisconsin and has been called one of the best places to live in America!"
+            },
+            {
+                question: "Wisconsin produces more of this than any other state:",
+                options: ["Cheese", "Beer", "Cranberries", "All of the above"],
+                correct: 3,
+                fact: "Wisconsin is #1 in cheese production (600+ varieties!), craft breweries per capita, AND cranberries (over 60% of the nation's supply)!"
+            },
+            {
+                question: "What famous ice cream company was founded in Wisconsin?",
+                options: ["Ben & Jerry's", "Culver's", "Dairy Queen", "Baskin-Robbins"],
+                correct: 1,
+                fact: "Culver's was founded in Sauk City, Wisconsin in 1984. They're famous for their ButterBurgers and Fresh Frozen Custard!"
+            },
+            {
+                question: "The Green Bay Packers are the only NFL team that is:",
+                options: ["Publicly owned", "Over 100 years old", "Named after a job", "In a small city"],
+                correct: 0,
+                fact: "The Packers are owned by over 360,000 shareholders! It's the only community-owned team in major American professional sports. No one person can own more than 200,000 shares."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        // Load first question
+        loadQuestion();
+
+        function loadQuestion() {
+            if (currentQuestion >= questions.length) {
+                showResults();
+                return;
+            }
+
+            answered = false;
+            const q = questions[currentQuestion];
+
+            document.getElementById('question').textContent = q.question;
+            document.getElementById('fun-fact').classList.remove('show');
+            document.getElementById('next-btn').disabled = true;
+
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+
+            q.options.forEach((option, index) => {
+                const button = document.createElement('div');
+                button.className = 'option';
+                button.textContent = option;
+                button.onclick = () => selectAnswer(index);
+                optionsContainer.appendChild(button);
+            });
+
+            updateProgress();
+        }
+
+        function selectAnswer(selected) {
+            if (answered) return;
+            answered = true;
+
+            const q = questions[currentQuestion];
+            const options = document.querySelectorAll('.option');
+
+            options.forEach((option, index) => {
+                option.style.pointerEvents = 'none';
+                if (index === q.correct) {
+                    option.classList.add('correct');
+                }
+                if (index === selected && index !== q.correct) {
+                    option.classList.add('incorrect');
+                }
+            });
+
+            if (selected === q.correct) {
+                score++;
+                document.getElementById('score').textContent = score;
+            }
+
+            // Show fun fact
+            document.getElementById('fact-text').textContent = q.fact;
+            document.getElementById('fun-fact').classList.add('show');
+
+            // Enable next button
+            document.getElementById('next-btn').disabled = false;
+        }
+
+        document.getElementById('next-btn').onclick = () => {
+            currentQuestion++;
+            loadQuestion();
+        };
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+        }
+
+        function showResults() {
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('results').classList.add('show');
+
+            const percentage = Math.round((score / questions.length) * 100);
+            document.getElementById('final-score').textContent = score + ' / ' + questions.length;
+
+            let performance = '';
+            if (percentage === 100) {
+                performance = "Perfect! You're a true Wisconsinite! 🏆";
+            } else if (percentage >= 80) {
+                performance = "Excellent! You know your Wisconsin! 🌟";
+            } else if (percentage >= 60) {
+                performance = "Good job! You know Wisconsin pretty well! 👍";
+            } else {
+                performance = "Not bad! Time to explore Wisconsin more! 🗺️";
+            }
+
+            document.getElementById('performance').textContent = performance;
+        }
+
+        // Initialize
+        document.getElementById('total').textContent = questions.length;
+    </script>
+</body>
+</html>
