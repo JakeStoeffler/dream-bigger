@@ -1,6 +1,6 @@
 // Presentation Navigation
 let currentSlide = 1;
-const totalSlides = 15;
+const totalSlides = 12;
 
 // Get all slides
 const slides = document.querySelectorAll('.slide');
@@ -42,9 +42,11 @@ function goToSlide(slideNumber) {
     updateProgress();
     updateButtons();
 
-    // Generate QR code when reaching the demo slide
-    if (currentSlide === 14) {
-        generateQRCode();
+    // Generate QR codes when reaching relevant slides
+    if (currentSlide === 10) {
+        generatePresentationQRCode();
+    } else if (currentSlide === 11) {
+        generateGitHubQRCode();
     }
 }
 
@@ -112,23 +114,19 @@ slides.forEach(slide => {
     });
 });
 
-// Generate QR Code for demo app
-function generateQRCode() {
-    const qrContainer = document.getElementById('qr-code');
-    const urlDisplay = document.getElementById('demo-url');
+// Generate QR Code for presentation
+function generatePresentationQRCode() {
+    const qrContainer = document.getElementById('qr-code-presentation');
+    if (!qrContainer || qrContainer.innerHTML) return; // Already generated
 
-    // Get the demo URL (will work both locally and when deployed)
-    const demoURL = 'https://jakestoeffler.github.io/dream-bigger/demo.html';
-
-    // Clear previous QR code if any
-    qrContainer.innerHTML = '';
+    const presentationURL = 'https://jakestoeffler.github.io/dream-bigger';
 
     // Generate QR code using qrcodejs library
     if (typeof QRCode !== 'undefined') {
         new QRCode(qrContainer, {
-            text: demoURL,
-            width: 300,
-            height: 300,
+            text: presentationURL,
+            width: 200,
+            height: 200,
             colorDark: "#1f2937",
             colorLight: "#ffffff",
             correctLevel: QRCode.CorrectLevel.H
@@ -136,17 +134,44 @@ function generateQRCode() {
     } else {
         // Fallback if library doesn't load
         qrContainer.innerHTML = `
-            <div style="width: 300px; height: 300px; background: white; display: flex; align-items: center; justify-content: center; border: 2px solid #3b82f6; border-radius: 8px;">
-                <div style="text-align: center; color: #1f2937; padding: 20px;">
-                    <div style="font-size: 48px; margin-bottom: 10px;">📱</div>
-                    <div style="font-size: 14px; font-weight: 600;">Scan to try the demo!</div>
-                    <div style="font-size: 12px; margin-top: 10px; word-break: break-all;">${demoURL}</div>
+            <div style="width: 200px; height: 200px; background: white; display: flex; align-items: center; justify-content: center; border: 2px solid #3b82f6; border-radius: 8px; margin: 0 auto;">
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 36px; margin-bottom: 10px;">📊</div>
+                    <div style="font-size: 12px; font-weight: 600; color: #1f2937;">Scan to view!</div>
                 </div>
             </div>
         `;
     }
+}
 
-    urlDisplay.textContent = demoURL;
+// Generate QR Code for GitHub repository
+function generateGitHubQRCode() {
+    const qrContainer = document.getElementById('qr-code-github');
+    if (!qrContainer || qrContainer.innerHTML) return; // Already generated
+
+    const githubURL = 'https://github.com/JakeStoeffler/dream-bigger';
+
+    // Generate QR code using qrcodejs library
+    if (typeof QRCode !== 'undefined') {
+        new QRCode(qrContainer, {
+            text: githubURL,
+            width: 200,
+            height: 200,
+            colorDark: "#1f2937",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    } else {
+        // Fallback if library doesn't load
+        qrContainer.innerHTML = `
+            <div style="width: 200px; height: 200px; background: white; display: flex; align-items: center; justify-content: center; border: 2px solid #3b82f6; border-radius: 8px; margin: 0 auto;">
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 36px; margin-bottom: 10px;">💻</div>
+                    <div style="font-size: 12px; font-weight: 600; color: #1f2937;">Scan to view code!</div>
+                </div>
+            </div>
+        `;
+    }
 }
 
 // Add touch/swipe support for mobile
