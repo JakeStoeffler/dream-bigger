@@ -1,6 +1,6 @@
 // Presentation Navigation
 let currentSlide = 1;
-const totalSlides = 12;
+const totalSlides = 14;
 
 // Get all slides
 const slides = document.querySelectorAll('.slide');
@@ -43,9 +43,9 @@ function goToSlide(slideNumber) {
     updateButtons();
 
     // Generate QR codes when reaching relevant slides
-    if (currentSlide === 10) {
+    if (currentSlide === 11) {
         generatePresentationQRCode();
-    } else if (currentSlide === 11) {
+    } else if (currentSlide === 12) {
         generateGitHubQRCode();
     }
 }

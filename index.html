@@ -16,7 +16,7 @@
           <p class="date">November 13, 2025</p>
           <div class="presenter">
             <p class="name">Jake Stoeffler</p>
-            <p class="role">Software Engineer | Fennimore High Class of 2010</p>
+            <p class="role">Sr. Software Engineer | The Energy Conservatory</p>
           </div>
         </div>
         <div class="nav-hint">Press → or click to continue</div>
@@ -25,7 +25,7 @@
       <!-- Slide 2: Who Am I -->
       <section class="slide" id="slide-2">
         <div class="content-left">
-          <h2>My Journey from Here</h2>
+          <h2>My Journey</h2>
           <div class="timeline">
             <div class="timeline-item">
               <div class="year">2010</div>
@@ -104,8 +104,54 @@
         </div>
       </section>
 
-      <!-- Slide 3: What is Software Engineering -->
+      <!-- Slide 3: What is Software Engineering? (Discussion) -->
       <section class="slide" id="slide-3">
+        <div class="content-center">
+          <h1 class="title-main" style="font-size: 4rem; margin-top: 3rem">
+            What is Software Engineering?
+          </h1>
+        </div>
+      </section>
+
+      <!-- Slide 4: Code Example -->
+      <section class="slide" id="slide-4">
+        <div class="content-center">
+          <h2>What Does Code Look Like?</h2>
+          <p class="subtitle">
+            This is JavaScript code from this presentation!
+          </p>
+          <pre
+            style="
+              background: #1e293b;
+              padding: 2rem;
+              border-radius: 1rem;
+              text-align: left;
+              margin: 2rem auto;
+              max-width: 900px;
+              font-size: 1.1rem;
+              overflow-x: auto;
+            "
+          ><code style="color: #e2e8f0; line-height: 1.6;"><span style="color: #94a3b8">// Navigate to specific slide</span>
+<span style="color: #c792ea">function</span> <span style="color: #82aaff">goToSlide</span>(<span style="color: #f78c6c">slideNumber</span>) {
+    <span style="color: #c792ea">if</span> (slideNumber &lt; <span style="color: #f78c6c">1</span> || slideNumber &gt; totalSlides) <span style="color: #c792ea">return</span>;
+
+    <span style="color: #94a3b8">// Remove active class from current slide</span>
+    slides[currentSlide - <span style="color: #f78c6c">1</span>].classList.<span style="color: #82aaff">remove</span>(<span style="color: #c3e88d">'active'</span>);
+
+    <span style="color: #94a3b8">// Update current slide</span>
+    currentSlide = slideNumber;
+
+    <span style="color: #94a3b8">// Add active class to new slide</span>
+    slides[currentSlide - <span style="color: #f78c6c">1</span>].classList.<span style="color: #82aaff">add</span>(<span style="color: #c3e88d">'active'</span>);
+}</code></pre>
+          <p class="emphasis" style="margin-top: 2rem">
+            This function controls the slide navigation we're using right now!
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 5: What is Software Engineering -->
+      <section class="slide" id="slide-5">
         <div class="content-center">
           <h2>What is Software Engineering?</h2>
           <div class="grid-3">
@@ -156,54 +202,8 @@
         </div>
       </section>
 
-      <!-- Slide 4: The AI Revolution -->
-      <section class="slide" id="slide-4">
-        <div class="content-split">
-          <div class="left-panel">
-            <h2>The AI Revolution</h2>
-            <h3 class="subtitle-large">
-              The Biggest Change in Software Engineering History
-            </h3>
-            <p>
-              When I graduated in 2014, AI tools like ChatGPT and Claude didn't
-              exist.
-            </p>
-            <p>
-              <strong
-                >Today, they're becoming part of our everyday toolkit.</strong
-              >
-            </p>
-            <div class="pros-cons">
-              <div class="pros">
-                <h4>✅ The Potential</h4>
-                <ul>
-                  <li>Can accelerate certain development tasks</li>
-                  <li>Great learning tool for new technologies</li>
-                  <li>Helps with debugging and code exploration</li>
-                  <li>More accessible entry point for beginners</li>
-                </ul>
-              </div>
-              <div class="cons">
-                <h4>⚠️ The Reality</h4>
-                <ul>
-                  <li>Jury is still out on long-term benefits</li>
-                  <li>Questions about code maintainability</li>
-                  <li>Must deeply understand what AI generates</li>
-                  <li>The bar for engineers keeps rising</li>
-                  <li>Passion matters more than ever</li>
-                </ul>
-              </div>
-            </div>
-            <p class="emphasis" style="margin-top: 2rem">
-              AI is a powerful tool, but it's just that — a tool. You still need
-              to be a skilled engineer to use it effectively.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Slide 5: A Day in the Life -->
-      <section class="slide" id="slide-5">
+      <!-- Slide 6: A Day in the Life -->
+      <section class="slide" id="slide-6">
         <div class="content-left">
           <h2>What Does a Typical Day Look Like?</h2>
           <p class="subtitle-note">
@@ -267,17 +267,20 @@
         </div>
       </section>
 
-      <!-- Slide 6: Education Path -->
-      <section class="slide" id="slide-6">
+      <!-- Slide 7: Education Path -->
+      <section class="slide" id="slide-7">
         <div class="content-center">
           <h2>How Do You Become a Software Engineer?</h2>
           <div class="education-paths">
             <div class="path">
               <h3>🎓 Traditional Path (Most Common)</h3>
               <ul>
-                <li>4-year Computer Science degree</li>
+                <li>4-year Bachelor's degree</li>
+                <li>Computer Science or Software Engineering</li>
                 <li>UW-Madison, UW-Platteville, UW-La Crosse</li>
-                <li>Starting salary: $70-90k+</li>
+                <li>
+                  Top schools: MIT, Stanford, Carnegie Mellon, UC Berkeley
+                </li>
               </ul>
             </div>
             <div class="path">
@@ -297,15 +300,15 @@
                 <li>Strong problem-solving skills</li>
                 <li>Math & logic aptitude</li>
                 <li>Curiosity & passion for learning</li>
-                <li>Communication skills</li>
+                <li>Communication skills (written & verbal)</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Slide 7: Salary & Benefits -->
-      <section class="slide" id="slide-7">
+      <!-- Slide 8: Salary & Benefits -->
+      <section class="slide" id="slide-8">
         <div class="content-split">
           <div class="left-panel">
             <h2>💰 Salary & Benefits (2025)</h2>
@@ -370,8 +373,8 @@
         </div>
       </section>
 
-      <!-- Slide 8: Job Outlook -->
-      <section class="slide" id="slide-8">
+      <!-- Slide 9: Job Outlook -->
+      <section class="slide" id="slide-9">
         <div class="content-center">
           <h2>📈 Job Outlook</h2>
           <p style="font-size: 1.1rem; margin-bottom: 2rem">
@@ -416,8 +419,8 @@
         </div>
       </section>
 
-      <!-- Slide 9: What Could YOU Build? -->
-      <section class="slide" id="slide-9">
+      <!-- Slide 10: What Could YOU Build? -->
+      <section class="slide" id="slide-10">
         <div class="content-center">
           <h2>What Could YOU Build?</h2>
           <div class="examples-grid">
@@ -458,8 +461,8 @@
         </div>
       </section>
 
-      <!-- Slide 10: Questions & Contact -->
-      <section class="slide" id="slide-10">
+      <!-- Slide 11: Questions & Contact -->
+      <section class="slide" id="slide-11">
         <div class="content-center">
           <h2>Questions? 🤔</h2>
           <div class="contact-info">
@@ -491,8 +494,8 @@
         </div>
       </section>
 
-      <!-- Slide 11: Getting Started -->
-      <section class="slide" id="slide-11">
+      <!-- Slide 12: Getting Started -->
+      <section class="slide" id="slide-12">
         <div class="content-center">
           <h2>🚀 Want to Try Coding?</h2>
           <div class="resources">
@@ -583,8 +586,8 @@
         </div>
       </section>
 
-      <!-- Slide 12: The Big Picture -->
-      <section class="slide" id="slide-12">
+      <!-- Slide 13: The Big Picture -->
+      <section class="slide" id="slide-13">
         <div class="content-center">
           <h2>Dream Bigger 🌟</h2>
           <div class="inspiration">
@@ -623,12 +626,58 @@
           </div>
         </div>
       </section>
+
+      <!-- Slide 14: The AI Revolution -->
+      <section class="slide" id="slide-14">
+        <div class="content-split">
+          <div class="left-panel">
+            <h2>The AI Revolution</h2>
+            <h3 class="subtitle-large">
+              The Biggest Change in Software Engineering History
+            </h3>
+            <p>
+              When I graduated in 2014, AI tools like ChatGPT and Claude didn't
+              exist.
+            </p>
+            <p>
+              <strong
+                >Today, they're becoming part of our everyday toolkit.</strong
+              >
+            </p>
+            <div class="pros-cons">
+              <div class="pros">
+                <h4>✅ The Potential</h4>
+                <ul>
+                  <li>Can accelerate certain development tasks</li>
+                  <li>Great learning tool for new technologies</li>
+                  <li>Helps with debugging and code exploration</li>
+                  <li>More accessible entry point for beginners</li>
+                </ul>
+              </div>
+              <div class="cons">
+                <h4>⚠️ The Reality</h4>
+                <ul>
+                  <li>Jury is still out on long-term benefits</li>
+                  <li>Questions about code maintainability</li>
+                  <li>Must deeply understand what AI generates</li>
+                  <li>The bar for engineers keeps rising</li>
+                  <li>Passion matters more than ever</li>
+                </ul>
+              </div>
+            </div>
+            <p class="emphasis" style="margin-top: 2rem">
+              AI is a powerful tool, but it's just that — a tool. You still need
+              to be a skilled engineer to use it effectively.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
 
     <!-- Navigation Controls -->
     <div class="nav-controls">
       <button id="prev-btn" class="nav-btn">←</button>
-      <span id="slide-counter">1 / 12</span>
+      <span id="slide-counter">1 / 14</span>
       <button id="next-btn" class="nav-btn">→</button>
     </div>
 
